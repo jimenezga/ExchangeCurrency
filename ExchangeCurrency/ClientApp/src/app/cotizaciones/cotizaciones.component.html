@@ -1,0 +1,22 @@
+<h1>Cotizaciones Pesos Argentinos</h1>
+
+<p>Este componente actualiza las tasas de cambios del Peso Argentino con respecto a las siguientes monedas, cada 5 min.</p>
+
+<p *ngIf="!cotizaciones"><em>Cargando...</em></p>
+
+<table class='table' *ngIf="cotizaciones">
+  <thead>
+    <tr>
+      <th>Moneda</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cotizacion of cotizaciones">
+      <td>{{ cotizacion.moneda }}</td>
+      <td>{{ cotizacion.precio }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)="update()">Actualizar Ahora</button>
