@@ -12,6 +12,7 @@ export class CotizacionesComponent {
   public _http: HttpClient;
   public _baseUrl: string;
   public subscription: Subscription;
+  public mostrarAlerta: boolean = false;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this._http = http;
@@ -22,7 +23,6 @@ export class CotizacionesComponent {
 
     const source = interval(5*1000); // se deberia actualizar cada 5000 milisegundos
     this.subscription = source.subscribe(val => this.update())
-
   }
 
   public update()
@@ -30,7 +30,9 @@ export class CotizacionesComponent {
    this._http.get<Cotizaciones[]>(this._baseUrl + 'api/Cotizacion/Exchange').subscribe(result => {
       this.cotizaciones = result;
     }, error => console.error(error));
-
+    if (this.mostrarAlerta == true) {
+      alert("Actualizando...");
+    }
   }
 }
 
