@@ -9,14 +9,10 @@ import { interval } from 'rxjs/observable/interval';
 })
 export class CotizacionesComponent {
   public cotizaciones: Cotizaciones[];
-  public _http: HttpClient;
-  public _baseUrl: string;
   public subscription: Subscription;
   public mostrarAlerta: boolean = false;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this._http = http;
-    this._baseUrl = baseUrl;
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
     http.get<Cotizaciones[]>(baseUrl + 'api/Cotizacion/Exchange').subscribe(result => {
       this.cotizaciones = result;
     }, error => console.error(error));
@@ -27,7 +23,7 @@ export class CotizacionesComponent {
 
   public update()
   {
-   this._http.get<Cotizaciones[]>(this._baseUrl + 'api/Cotizacion/Exchange').subscribe(result => {
+   this.http.get<Cotizaciones[]>(this.baseUrl + 'api/Cotizacion/Exchange').subscribe(result => {
       this.cotizaciones = result;
     }, error => console.error(error));
     if (this.mostrarAlerta == true) {
