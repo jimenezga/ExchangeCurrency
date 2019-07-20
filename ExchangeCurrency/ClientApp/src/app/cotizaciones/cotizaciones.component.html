@@ -1,13 +1,10 @@
 <h1>Cotizaciones Pesos Argentinos</h1>
 
 <p>Este componente actualiza las tasas de cambios del Peso Argentino con respecto a las siguientes monedas, cada 5 seg.</p>
-<<<<<<< HEAD
 <label class="checkbox-inline">
     <input type="checkbox" (change)="mostrarAlerta=!mostrarAlerta" [(checked)]="mostrarAlerta"/> Mostrar Alerta de Actualización cada 5 seg
 </label>
-=======
 
->>>>>>> cbd4f79a92cdd4a8028c0e6f9c1d3a34af66ac1d
 <p *ngIf="!cotizaciones"><em>Cargando...</em></p>
 
 <table class='table' *ngIf="cotizaciones">
